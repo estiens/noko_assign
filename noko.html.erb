@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Current Standings: EPL</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  
+        <header>
+        Header
+        </header>
+
+        <ol class="teams">
+        <% @team_array.each do |team| %>
+        <li class="<%= team.status %>"><img src="images_assets/<%=team.name.downcase%>.png" height="150px"><div="teamname"><%= team.name %></div><div="teampoints"><%= team.points %></li>
+        <% end %>
+        </ol>
+
+        <footer>
+        Footer
+        </footer>
+    
+    
+   
+</body>
+</html>
+
+   

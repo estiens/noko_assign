@@ -2,6 +2,7 @@ require 'rubygems'
 require 'nokogiri'
 require "rest-client"
 require 'colorize'
+require 'erb'
 
 EPL_TABLE_URL= "http://www.premierleague.com/en-gb/matchday/league-table.html"
 
@@ -43,6 +44,13 @@ class Database
   def initialize
     @team_array=[]
   end
+
+  def convert_erb_html_file
+    template_file = File.open("noko.html.erb", 'r').read
+    erb = ERB.new(template_file)
+    File.open("noko.html", 'w+') { |file| file.write(erb.result(binding)) }
+  end
+
 end
 
 @db=Database.new
@@ -71,4 +79,5 @@ end
   puts "#{x.name} has #{x.points} points".send color #and a goal difference of #{x.goal_difference} and a status of #{x.status}".send color
 end
 
+@db.convert_erb_html_file
 
