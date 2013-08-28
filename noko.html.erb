@@ -2,28 +2,68 @@
 
 <html>
 <head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Current Standings: EPL</title>
+    <link rel="stylesheet" href="colorbox.css" />
+    <link rel="stylesheet" href="css/main.css">
     <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-  
-        <header>
-        Header
-        </header>
-
+    <div id="teamcontainer">
         <ol class="teams">
         <% @team_array.each do |team| %>
-        <li class="<%= team.status %>"><img src="images_assets/<%=team.name.downcase%>.png" height="150px"><div="teamname"><%= team.name %></div><div="teampoints"><%= team.points %></li>
+            <li class="<%= team.status %>">
+            <div class="teamrecord"><%=team.wins%> W : <%=team.draws%> D : <%=team.losses%> L  </div>
+            <img src="images/<%=team.name.downcase%>.png" height="150px">
+            <div class="teamname"><%= team.name %></div>
+            <div class="teampoints"><%= team.points %></div>
+            </li>
+            <div class="teampointsgraph"><% team.points.to_i.times do %><img src="images/retro-zig-zag-pattern.png" height="50px"><%end%></div>
         <% end %>
         </ol>
-
-        <footer>
-        Footer
-        </footer>
-    
-    
-   
+    </div>
+        
+    <br style="clear:both" />
+        
+    <div id="breakingnews">
+        <h1>breaking news</h1>
+        <ul class="newsheadlines">
+            <% @headlines_array.each do |news| %>
+                <% if news.keyword=="mainheadlines" %>
+                <li><a href="<%=news.link%>"><%=news.headline%></a></li>
+                <% end %>
+            <% end %>
+        </ul>
+    </div>
+        
+    <div id="injurynews">
+        <h1>injury news</h1>
+            <ul class="newsheadlines">
+            <% @headlines_array.each do |news| %>
+                <% if news.keyword=="injuries" %>
+                <li><a href="<%=news.link%>"><%=news.headline%></a></li>
+                <% end %>
+            <% end %>
+            </ul>
+    </div>
+        
+    <div id="fantasynews">
+        <h1>fantasy news</h1>
+            <ul class="newsheadlines">
+            <% @headlines_array.each do |news| %>
+                <% if news.keyword=="fantasynews" %>
+                <li><a href="<%=news.link%>"><%=news.headline%></a></li>
+                <% end %>
+            <% end %>
+            </ul>
+    </div>
+        
+    <footer>
+        <p class="footerinfo">built with <a href="http://www.ruby-lang.org">Ruby</a> at <a href="http://www.bitmakerlabs.com">Bitmaker Labs</a></p>
+    </footer>
+      
 </body>
 </html>
 

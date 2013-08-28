@@ -1,8 +1,8 @@
  /*imports*/
         @import 'lesshat';
    
-        @import url(http://fonts.googleapis.com/css?family=Bubbler+One);
-        @import url(http://fonts.googleapis.com/css?family=Habibi);
+        @import url(http://fonts.googleapis.com/css?family=Montserrat);
+        @import url(http://fonts.googleapis.com/css?family=Happy+Monkey);
 
 
         /*fonts*/
@@ -11,100 +11,86 @@
         @whimsy:'Bubbler One', cursive;
 
         /*colors*/
-        @bg_color:#ccc;
-        @yellowl:#FFF3D4;
-        @yellowd:#FFE9B3;
-        @greenl:#B6C9AB;
-        @greend:#989D8A;
+        @bg_color:#FFF3D4;
+        @bg_color2:#FFE9B3;
+        
+        @color1:lighten(#272822,10);
+        @color2:#ff35a5;
+        @color3:#3583ff;
+        @color4:#a5ff35;
+        
         @brown:#4F393D;
         @blue:#39464f;
-
-    
 
         /*mixins*/
         .clear { clear: both; }
         
         /*some defaults*/
+        html, body {
+        margin: 0;
+        padding: 0;
+        }
 
         h1 {font-size: 42px; font-weight: bold;}
         h2 {font-size: 32px; font-weight: bold;}
         h3 {font-size: 22px; font-weight: bold;}
         h4 {font-size: 16px; font-weight: bold;}
-        a { color: black; text-decoration: none; }
-        a:hover { color:@brown;}
         ul {list-style-type: none }
+        a  {text-decoration: none}
+        a:hover {.opacity(.9)}
         
         /*our LESS*/
-
+  
         body { 
-        font-family:@sans; 
-        background-image: -moz-linear-gradient(top, #fff, #ccc);
-        background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc));
-        background-image: -webkit-linear-gradient(top, #fff,#ccc); }
-        
-    
+        font-family:"@sans"; 
+        background:@color1;
+        }
+        body a{color:black;}
 
-/*sidetabs*/
-.sidetab {
-  position: fixed;
-  left: -200px;
-  top: 50%;
-  margin-top: 00px;
-  transform: rotate(-90deg);
-  -webkit-transform: rotate(-90deg);
-  -moz-transform: rotate(-90deg);
-  -o-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-}
+        div#breakingnews {
+        background: @color2;
+        padding:15px;
+        width:100%;
+        }
+      
+      div#injurynews {
+        background: @color3;
+        padding:15px;
+        width:100%;
+        }
+
+      div#fantasynews {
+        background: @color4;
+        padding:15px;
+        width:100%;
+      }
+
+        footer {float:right;padding:10px;text-transform: uppercase;font-size:.7em;font-family:"happy monkey"}
+        footer a {text-decoration:none;color:grey;}
+
+        .teampointsgraph {height:25px; display:none;float:left;}
+        .teampoints {.opacity(0); font-size:6em; display:inline-block;margin-top:-200px;font-weight: bold}
+        .teampoints:hover{.opacity(1)}
+        #teamcontainer {width:100%;margin:25px auto}
+        .teams {list-style-type: none; font-family:"happy monkey";}
+        .teams li {width:200px; padding:25px;float:left;text-align:center;color:rgba(255,255,255,.7)}
+        .teams li:hover{background:rgba(255,255,255,.2);border-radius:000px}
+        .teams li.champions:hover{background:rgba(0,100,100,.3)}
+        .teams li.relegation:hover{background:rgba(100,0,0,.3)}
+        
+        .teams img{}
+        .teams img:hover {}
+        .window h1 {padding:5px 15px;font-family:"montserrat"}
+        .newsheadlines li {padding:5px;font-family:@sans}
+        
+
 
 /* fancy schmancy transitions */
-a {
-  -webkit-transition-property: all;
-  -webkit-transition-duration: 200ms;
-  -webkit-transition-timing-function: linear, ease-in;
-  -moz-transition-property: all;
-  -moz-transition-duration: 200ms;
-  -moz-transition-timing-function: linear, ease-in;
-  -o-transition-property: color, text;
-  -o-transition-duration: 200ms;
-  -o-transition-timing-function: linear, ease-in;
+
+li {
+.transition(~"background-color 1s linear"); 
 }
 
-/*sliding tab styling*/
+li img, .teampoints {.transition (~"all 1s linear")}
 
-#slideOut {
-  position:fixed;
-  width:270px;
-  height:180px;
-  top:45%;
-  left:-230px;
-}
-#slideClick{
-  float:right;
-    height:180px;
-    width:40px;
-    background:@greenl;
-.border-radius(0px10px10px0px);
-}
-#slideContent {
-  background:@greend;
-  width: 220px;
-  height: 150px;
-  padding: 30px 0 0 10px;
-    float:left;
-
-}
-#tabtitle{color:@brown;width:200px;margin-left:-85px;
-  font-family:@serif;
-  transform: rotate(-90deg);
-  -webkit-transform: rotate(-90deg);
-  -moz-transform: rotate(-90deg);
-  -o-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);}
-
-.infoicon {.opacity(.5)}
-.infoicon:hover {.opacity(1)}
-.infoicon:first-child, .infoicon:last-child {margin-left: 15px;}
 
