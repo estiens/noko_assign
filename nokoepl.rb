@@ -43,23 +43,6 @@ class Team
 
 end
 
-class News
-  attr_accessor :headline, :link
-
-  def initialize(headline, link)
-    @headline=headline
-    @link=link
-  end
-end
-
-# class InjuryNews
-#   attr_accessor :headline, :link
-
-#   def initialize(headline, link)
-#     @headline=headline
-#     @link=link
-#   end
-# end
 
 class NewsHeadlines
   attr_accessor :headline, :link, :keyword
@@ -160,8 +143,9 @@ end
          color="green"
    end
 
-  # puts "#{x.name} has #{x.points} points".send color #and a goal difference of #{x.goal_difference} and a status of #{x.status}".send color
+  
 end
 
 @db.convert_erb_html_file
+puts "All completed."
 
