@@ -81,9 +81,9 @@ class Database
   end
 
   def convert_erb_html_file
-    template_file = File.open("noko.html.erb", 'r').read
+    template_file = File.open("index.html.erb", 'r').read
     erb = ERB.new(template_file)
-    File.open("noko.html", 'w+') { |file| file.write(erb.result(binding)) }
+    File.open("index.html", 'w+') { |file| file.write(erb.result(binding)) }
   end
 
 end
@@ -135,13 +135,13 @@ end
 #   end
 # end
 
-@db.headlines_array.each do |x| 
-  if x.keyword == "mainheadlines"
-  puts "#{x.headline} is coded as MAIN"
-  elsif x.keyword == "injuries"
-  puts "#{x.headline} is coded as INJURIES"
-  end
-end
+# @db.headlines_array.each do |x| 
+#   if x.keyword == "mainheadlines"
+#   puts "#{x.headline} is coded as MAIN"
+#   elsif x.keyword == "injuries"
+#   puts "#{x.headline} is coded as INJURIES"
+#   end
+# end
 
 
 @db.team_array.sort_by! {|x| [-x.points, -x.goal_difference, -x.goals_for]}
