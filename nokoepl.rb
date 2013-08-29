@@ -5,6 +5,7 @@ require 'colorize'
 require 'erb'
 require 'CGI'
 require 'open-uri'
+require 'bundler'
 
 #scraping team info# 
 
@@ -105,6 +106,19 @@ fantasynews.each do |link|
   @db.headlines_array<<NewsHeadlines.new(link.text, link.attribute('href').to_s,"fantasynews")
 end 
 
+@db.team_array.sort_by! {|x| [-x.points, -x.goal_difference, -x.goals_for]}
+for x in (0..@db.team_array.length-1)
+  @db.team_array[x].status="champions" if x > -1 && x < 4
+  @db.team_array[x].status="relegation" if x > 16
+end
+  
+
+
+@db.convert_erb_html_file
+puts "All completed."
+
+
+
 #scraping all teams, need to add rescue clause if news is empty!#
 
 # BASE_URL="https://www.google.com/search?hl=en&gl=ca&tbm=nws&authuser=0&q="
@@ -126,26 +140,4 @@ end
 #   end
 # end
 
-
-@db.team_array.sort_by! {|x| [-x.points, -x.goal_difference, -x.goals_for]}
-for x in (0..@db.team_array.length-1)
-  @db.team_array[x].status="champions" if x > -1 && x < 4
-  @db.team_array[x].status="relegation" if x > 16
-end
-
-
-@db.team_array.each do |x|
-   color="blue"
-   case x.status
-       when "relegation"
-         color="red"
-       when "champions"
-         color="green"
-   end
-
-  
-end
-
-@db.convert_erb_html_file
-puts "All completed."
 
